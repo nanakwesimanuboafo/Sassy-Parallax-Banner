@@ -1,0 +1,73 @@
+$parallax-height: 100vh;
+$center-margin: 0px auto;
+
+@mixin background-size($size) {
+    -webkit-background-size: $size;
+    -moz-background-size: $size;
+    -o-background-size: $size;
+    background-size: $size;
+}
+
+@mixin parallax-background($file) {
+    background: url($file) no-repeat center center fixed;
+    @include background-size(cover);
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+    color: #2e3738;
+}
+
+#landscape {
+    @include parallax-background("https://s3.amazonaws.com/codecademy-content/projects/sass/landscape.jpg");
+}
+
+#monkeys {
+    @include parallax-background("https://s3.amazonaws.com/codecademy-content/projects/sass/monkeys.jpg");
+}
+
+#landscape,
+#monkeys {
+    height: $parallax-height;
+    width: 100%;
+    perspective: 1px;
+    transform: translateZ(-1px);
+
+    overflow: {
+        x: hidden;
+        y: auto;
+    }
+
+    h1 {
+        letter-spacing: 0.06em;
+        color: #fff;
+        opacity: 0.7;
+        transform: translateZ(-2px);
+
+        text: {
+            transform: uppercase;
+            align: center;
+        }
+
+        font: {
+            family: "Bitter", serif;
+            size: 120px;
+        }
+    }
+}
+
+p {
+    width: 70%;
+    padding: 5%;
+    margin: $center-margin;
+    text-align: center;
+    line-height: 1.4;
+
+    font: {
+        size: 20px;
+        weight: 200;
+    }
+}
